@@ -1,35 +1,52 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import MovieCard from "./MovieCard";
+import MovieSearch from "./MovieSearch";
 
-const API_URL = "https://www.omdbapi.com/?apikey=da68c5d2";
 export default function App() {
-  const [movie, setMovies] = useState([]);
-  const searchMovies = async (search) => {
-    const response = await fetch(`${API_URL}&s=${search}`);
-    const data = await response.json();
-    console.log(data);
-    setMovies(data.Search);
-  };
-  useEffect(() => {
-    searchMovies("spiderman");
-  }, []);
+    
+  const [isClicked, setIsClicked]=useState(false);
+    const [isDark,setIsDark]=useState(0 );
+    const menuToggler=()=>{
+        setIsClicked(!isClicked)
+
+console.log("toggled")
+    }
+     const themeToggler=()=>{
+         setIsDark(!isDark);
+     }
+    useEffect(()=>{
+        localStorage.setItem("theme","dark");
+        console.log(localStorage.getItem("theme"))
+    }, [])
+
   return (
-    <div className="container bg-gray-100 px-6">
-      <h1 className="text-4xl font-bold text-center py-2">Movieland</h1>
-      <form className="flex items-center justify-between mt-4 bg-white rounded-md p-3">
-           <input
-            className=""
-          type="text"
-          placeholder="Search for a movie"
-          onChange={(e) => searchMovies(e.target.value)}
-        />
-        <button type="submit" className="bg-white">Search</button>
-      </form>
-      <div className="grid grid-cols-2 gap-4 mt-4 ">
-        {movie?.length > 0 &&
-          movie.map((movie) => <MovieCard movie={movie} />)}
-      </div>
-    </div>
-  );
+      
+    <div className="container " >
+        
+        <nav className="bg-secondary shadow-md  flex shadow-md">
+
+<div className=" pl-3 py-1" onClick={menuToggler}>{isClicked?(
+    <i className="fa-solid fa-arrow-left text-text text-2xl" ></i>):(<i className="fa-solid fa-bars text-text text-2xl"></i>)}
+</div>
+      <h1 className="text-2xl font-anta text-center py-1 text-text mx-auto ">Movie Home</h1>
+<div className=" pr-3 py-1" onClick={themeToggler}>{isDark?(
+    <i className="fa-solid fa-sun text-text  text-2xl" ></i>):(<i className="fa-solid fa-moon text-text text-2xl"></i>)}
+</div>
+        </nav>
+        {
+      isClicked?(
+          <div className="bg-bg w-full h-screen text-center py-8 text-lg text-text ">
+              <ul >
+                  <li>Home</li>
+                  <li>webseries </li>
+              </ul>
+          </div>
+      ):null
+        }
+<MovieSearch/>
+    
+    
+      
+      
+    </div> );
 }

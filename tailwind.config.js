@@ -5,7 +5,18 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+      fontFamily:{
+          "anta":["Anta"],
+          "monsterrat":["Montserrat"]
+      },
+    extend: {
+        colors: {
+        'bg': 'black',
+        'text':"#F0EDCF",
+        'secondary':"#40A2D8",
+        'tertiary':"#FFB0B0"
+      },
+    },
   },
   plugins: [],
 }
