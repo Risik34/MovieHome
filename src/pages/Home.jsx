@@ -1,4 +1,4 @@
-import MovieCard from "./MovieCard";
+import MovieCard from "../components/MovieCard";
 import { useState, useEffect } from "react";
 export default function MovieSearch (){
 const API_URL = "https://www.omdbapi.com/?apikey=da68c5d2";

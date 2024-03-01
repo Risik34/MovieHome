@@ -1,7 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import MovieSearch from "./MovieSearch";
-
+import Home from "./pages/Home";
 export default function App() {
     
   const [isClicked, setIsClicked]=useState(false);
@@ -43,7 +42,7 @@ console.log("toggled")
           </div>
       ):null
         }
-<MovieSearch/>
+<Home/>
     
     
       
