@@ -1,23 +1,22 @@
 import MovieCard from "../components/MovieCard";
 import { useState, useEffect } from "react";
+import searchMovies from "../functions/searchMovies"
 export default function MovieSearch (){
-const API_URL = "https://www.omdbapi.com/?apikey=da68c5d2";
-const [movie, setMovies] = useState([]);
-const [searchTerm, setSearchTerm] = useState("fast");
 
-  const searchMovies = async () => {
-    const response = await fetch(`${API_URL}&s=${searchTerm}`);
-    const data = await response.json();
-    
-    setMovies(data.Search);
-  };
+const [movie, setMovies] = useState([]);
+const [searchTerm, setSearchTerm] = useState("lakshya");
+
+  
  useEffect(() => {
-    searchMovies();
+searchMovies(searchTerm).then(data => {
+setMovies(data.Search);
+});
+     
   }, []);
     return (<div className="px-6 bg-bg py-6 text-text font-monsterrat">
           <form className="flex items-center   bg-secondary  shadow-md  justify-around rounded-md">
            <input
-            className="py-3 px-3 w-full  bg-secondary bg-white text-bg"
+            className="py-3 px-3 w-full rounded-md bg-secondary bg-white text-bg"
           type="text"
         value={searchTerm}
           placeholder="Search for a movie"

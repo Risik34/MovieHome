@@ -24,7 +24,7 @@ console.log("toggled")
       <BrowserRouter>
     <div className="container " >
         
-        <nav className="bg-secondary shadow-md  flex shadow-md">
+        <nav className="bg-secondary shadow-md  flex shadow-md py-1">
 
 <div className=" pl-3 py-1" onClick={menuToggler}>{isClicked?(
     <i className="fa-solid fa-arrow-left text-text text-2xl" ></i>):(<i className="fa-solid fa-bars text-text text-2xl"></i>)}
