@@ -8,16 +8,16 @@ const [searchTerm, setSearchTerm] = useState("fast");
   const searchMovies = async () => {
     const response = await fetch(`${API_URL}&s=${searchTerm}`);
     const data = await response.json();
-    console.log(data);
+    
     setMovies(data.Search);
   };
  useEffect(() => {
     searchMovies();
   }, []);
     return (<div className="px-6 bg-bg py-6 text-text font-monsterrat">
-          <form className="flex items-center   bg-secondary rounded-md shadow-md  justify-around ">
+          <form className="flex items-center   bg-secondary  shadow-md  justify-around rounded-md">
            <input
-            className="py-3 px-3 w-full rounded-md bg-secondary"
+            className="py-3 px-3 w-full  bg-secondary bg-white text-bg"
           type="text"
         value={searchTerm}
           placeholder="Search for a movie"
@@ -25,7 +25,7 @@ const [searchTerm, setSearchTerm] = useState("fast");
           
         
                />
-          <button className="px-2 py-1 hover:bg-gray-50 h-full" onClick={searchMovies} type="button"><i className="fa-solid fa-search text-text text-xl"></i></button>
+          <button className="px-2 py-1 hover:bg-gray-50 h-full rounded-md" onClick={searchMovies} type="button"><i className="fa-solid fa-search text-text text-xl"></i></button>
       </form>
       <div className="grid grid-cols-2 gap-4 mt-4 ">
         {movie?.length > 0 &&

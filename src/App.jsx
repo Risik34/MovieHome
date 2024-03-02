@@ -1,6 +1,8 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import {BrowserRouter,Routes,Route,Link} from "react-router-dom";
 import Home from "./pages/Home";
+import Watchlist from "./pages/Watchlist"; 
 export default function App() {
     
   const [isClicked, setIsClicked]=useState(false);
@@ -15,11 +17,11 @@ console.log("toggled")
      }
     useEffect(()=>{
         localStorage.setItem("theme","dark");
-        console.log(localStorage.getItem("theme"))
+        
     }, [])
 
   return (
-      
+      <BrowserRouter>
     <div className="container " >
         
         <nav className="bg-secondary shadow-md  flex shadow-md">
@@ -34,18 +36,21 @@ console.log("toggled")
         </nav>
         {
       isClicked?(
-          <div className="bg-bg w-full h-screen text-center py-8 text-lg text-text ">
-              <ul >
-                  <li>Home</li>
-                  <li>webseries </li>
+          <div className="bg-bg w-full h-screen text-center py-8 text-xl space-y-2  text-text ">
+              <ul onClick={()=>{setIsClicked(!isClicked)}}>
+                  <li><Link to="/">Home</Link></li>
+                  <li><Link to="/watchlist">Watchlist</Link> </li>
               </ul>
           </div>
       ):null
         }
-<Home/>
+        <Routes>
+<Route path="/" element={<Home/>}/>
+            <Route path="watchlist" element={<Watchlist/>}/>
     
-    
+                </Routes>
       
       
-    </div> );
+    </div> 
+      </BrowserRouter>);
 }
