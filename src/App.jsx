@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import {BrowserRouter,Routes,Route,Link} from "react-router-dom";
 import Home from "./pages/Home";
 import Watchlist from "./pages/Watchlist"; 
+import NavBar from './components/NavBar';
 export default function App() {
     
   const [isClicked, setIsClicked]=useState(false);
@@ -22,18 +23,10 @@ console.log("toggled")
 
   return (
       <BrowserRouter>
+          
     <div className="container " >
-        
-        <nav className="bg-secondary shadow-md  flex shadow-md py-1">
+    <NavBar/>
 
-<div className=" pl-3 py-1" onClick={menuToggler}>{isClicked?(
-    <i className="fa-solid fa-arrow-left text-text text-2xl" ></i>):(<i className="fa-solid fa-bars text-text text-2xl"></i>)}
-</div>
-      <h1 className="text-2xl font-anta text-center py-1 text-text mx-auto ">Movie Home</h1>
-<div className=" pr-3 py-1" onClick={themeToggler}>{isDark?(
-    <i className="fa-solid fa-sun text-text  text-2xl" ></i>):(<i className="fa-solid fa-moon text-text text-2xl"></i>)}
-</div>
-        </nav>
         {
       isClicked?(
           <div className="bg-bg w-full h-screen text-center py-8 text-xl space-y-2  text-text ">
